@@ -3,11 +3,11 @@ import { stub } from 'sinon';
 import '../src/Customer/Customer-details.js';
 import Sinon  from 'sinon';
 
-const el = await fixture(html`<customer-details></customer-details>`);
-const form = el.shadowRoot.querySelectorAll('lion-button');
+
 
 describe('customer details', () => {
-  
+  const el = await fixture(html`<customer-details></customer-details>`);
+  const form = el.shadowRoot.querySelectorAll('lion-button');
   it('check for spy', () => {
     const abc = Sinon.spy(el, "_toEmidetails");
     form[0].click();
