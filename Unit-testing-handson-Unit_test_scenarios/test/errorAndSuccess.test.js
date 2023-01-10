@@ -4,33 +4,35 @@ import '../src/SuccessAndError/Success.js';
 import '../src/SuccessAndError/Error.js';
 import Sinon from 'sinon';
 
-const errorEl = await fixture(html`<loan-error></loan-error>`);
-const form = errorEl.shadowRoot.querySelectorAll('lion-button');
 
-const sucessEl = await fixture(html`<loan-success></loan-success>`);
-const formSuces = sucessEl.shadowRoot.querySelectorAll('lion-button');
 
-describe('Success screen ', () => {
-  it('Success, check _toHome function', () => {
-    const abc = Sinon.spy(sucessEl, "_toHome");
-    formSuces[0].click();
-    expect(abc.calledOnce).to.be.true;
+describe('Success screen ', async () => {
+  // Write test cases inside this block
+  let successElement = await fixture(html`<loan-success></loan-success>`);
+let successForm = successElement.shadowRoot.querySelectorAll('lion-button');
+
+let errorElement = await fixture(html`<loan-error><loan-error>`);
+let errorForm = errorElement.shadowRoot.querySelectorAll('lion-button');
+  it('checks _toHome function success', () => {
+    let success = Sinon.spy(successElement, "_toHome");
+    successForm[0].click();
+    expect(success.calledOnce).to.be.true;
   });
 
-  it('Success, check accessible', () => {
-    expect(sucessEl).to.be.accessible;
-  });
-
+  it('checks accessible success', () => {
+    expect(successElement).to.be.accessible;
+  })
 });
 
 describe('error screen', () => {
-  it('Error, check _toHome function', () => {
-    const abc = Sinon.spy(errorEl, "_toHome");
-    form[0].click();
-    expect(abc.calledOnce).to.be.true;
+  // Write test cases inside this block
+  it('checks _toHome function error', () => {
+    let error = Sinon.spy(errorElement, '_toHome');
+    errorForm[0].click();
+    expect(error.calledOnce).to.be.true;
   });
 
-  it('Error, check accessible', () => {
-    expect(errorEl).to.be.accessible;
-  });
-})
+  it('checks accessible error', () => {
+    expect(errorElement).to.be.accessible;
+  })
+});
