@@ -1,21 +1,19 @@
 import { html, fixture, expect } from '@open-wc/testing';
-import { stub } from 'sinon';
+import { Sinon } from 'sinon';
 import '../src/Customer/Customer-details.js';
-import Sinon  from 'sinon';
 
 
-
-describe('customer details', () => {
-  const el = await fixture(html`<customer-details></customer-details>`);
-  const form = el.shadowRoot.querySelectorAll('lion-button');
-  it('check for spy', () => {
-    const abc = Sinon.spy(el, "_toEmidetails");
+describe('customer details', async () => {
+  // Write test cases inside this block
+  let element = await fixture(html`<customer-details></customer-details>`);
+  let form = element.shadowRoot.querySelectorAll('lion-button');
+  it('checks for spy', () => {
+    const checkSpy = Sinon.spy(element, "_toEmidetails");
     form[0].click();
-    expect(abc.calledOnce).to.be.true;
+    expect(checkSpy.calledOnce).to.be.true;
   });
 
-it('check accessible', () => {
-  expect(el).to.be.accessible;
-});
-
+  it('is accessible', () => {
+    expect(element).to.be.accessible;
+  });
 });
